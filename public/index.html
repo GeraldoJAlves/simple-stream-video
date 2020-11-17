@@ -4,58 +4,7 @@
     <meta charset="utf-8" />
     <title>Test Stream Video</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <style>
-      .container {
-        width: 90vw;
-        height: 90vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        margin: 0 auto;
-      }
-      span {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      body {
-        background-color: black;
-      }
-
-      .choice {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background-color: #666;
-        width: 230px;
-        margin: 50px auto;
-        border-radius: 10px;
-        border: 1px solid #777;
-        box-shadow: 0 0 3px #333;
-      }
-      .choice > span:first-child.active {
-        background-color: #ccc;
-        border-bottom-left-radius: 10px;
-        border-top-left-radius: 10px;
-      }
-      .choice > span:last-child.active {
-        background-color: #ccc;
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
-      }
-
-      .choice > span {
-        flex: 1;
-        cursor: pointer;
-      }
-      .choice > span:first-child {
-        border-right: 1px solid #999;
-      }
-
-      #player-video {
-        outline: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body style="text-align: center">
     <div class="container">
@@ -73,32 +22,6 @@
         ></video>
       </div>
     </div>
-    <script>
-      const createVideo = (src) => {
-        const video = `<video
-            id="player-video"
-            src="${src}"
-            controls
-            width="90%"
-            height="90%"></video>`;
-        document.getElementById('player-video').remove();
-        document.getElementById('video-container').innerHTML=video;
-      };
-
-      const changePlayer = (event) => {
-        const { target } = event;
-
-        document.getElementsByClassName("active")[0].classList.remove("active");
-        target.classList.add("active");
-        const isStreaming = target.innerText == "Streaming";
-        const player = document.getElementById("player-video");
-
-        if (isStreaming) {
-          createVideo("/stream/bunny.mp4");
-        } else {
-          createVideo("/movies/bunny.mp4");
-        }
-      };
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
